@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="input1" id="input1">
+        <button id="submit" type="button">submit</button>
+    </form>
+    <script>
+        const input1 = document.getElementById("input1");
+        const submit = document.getElementById("submit");
+
+        submit.addEventListener("click",()=>{
+            let name = input1.value.charAt(0).toUpperCase() +input1.value.slice(1).toLowerCase();
+            console.log(name);
+            let msg = name=="Bob"||name=="Alice"?`Hello ${name}`:"Hello stranger";
+            alert(msg);
+        });
+    </script>
+</body>
+</html>
