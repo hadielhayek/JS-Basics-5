@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="operation">number : </label>
+      <input type="text" name="input1" id="input1" />
+      <label for="operation">operation : </label>
+      <select  name="operation" id="operation">
+        <option value="+" selected>+</option>
+        <option value="*">*</option>
+      </select>
+
+      <button id="submit" type="button">submit</button>
+    </form>
+    <script>
+      const input1 = document.getElementById("input1");
+      const submit = document.getElementById("submit");
+      const operand = document.getElementById("operation");
+      submit.addEventListener("click", () => {
+        let result = 1;
+        let number = Number(input1.value) || 0;
+        if (number <= 0) {
+            alert("Please enter a positive number");
+            return;
+        }
+        for(let i=2;i<=number;i++) {
+          switch(operand.value){
+            case "+":result+=i;break;
+            case "*":result*=i;break;
+          }
+        }
+        alert(`the result of ${operand.value} of numbers from 1 to ${number} is : ${result}`);
+      });
+    </script>
+  </body>
+</html>
