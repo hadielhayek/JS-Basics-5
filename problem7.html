@@ -7,22 +7,25 @@
     <title>Document</title>
 </head>
 
-<body>
-    <script>
-            for (let i = 2; i <= 30; i++) {
-                let prim = 0;
-
-                for (let j = 2; j < i; j++) {
-                    if (i % j == 0) {
-                        prim = 1;
-                        break;
-                    }
-                }
-                if (i > 1 && prim == 0) {
-                    console.log(i);
-                }
-            }
+<body> <form>
+    <button id="submit" type="button">SHOW prime number between 2 and 30</button>
+  </form>
+  <script>
+    const submit = document.getElementById("submit");
+   
+    submit.addEventListener("click", () => {
+      let result ="Prime number between 2 and 30 : ";
+      for(let i=2;i<=30;i++) {
+          let prime =true;
+          for(let j=2;j<=Math.sqrt(i);j++){
+            if(i%j==0){prime = false; break;} 
+          }
+          if(prime) result+=i+",";
+          
+        }
+      alert(result);
+    });
     </script>
-</body>
+   </body>
 
 </html> 
