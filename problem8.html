@@ -1,38 +1,47 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <form>
+      <input type="text" name="input1" id="input1" />
+      <button id="submit" type="button">submit</button>
+    </form>
     <script>
-          let randNum = Math.floor(Math.random()*100 + 1);
-        let input = prompt('Enter a guess between 1 and 100:')
-        let trials = 1;
-
-        while (trials <8){
-            if (input == randNum) {
-                alert('Correct with ' + trials + ' trials!');
-                break;
-            } 
-            if (input > randNum){
-                input = prompt('too large - trial '+ trials+'/8\nEnter number again:');
-
-            }
-            else if (input < randNum){
-                input = prompt('too small - trial '+ trials+'/8\nEnter number again:');
-
-            }
-            trials++;
-            if (trials >= 8) {
-                alert('You loose!')
-            }
+      const randNum = Math.floor(Math.random() * 100 + 1);
+      const input1 = document.getElementById("input1");
+      const submit = document.getElementById("submit");
+      let trials = 1;
+      let func = (e) => {
+        let number = Number(input1.value) || 0;
+        if (number <= 0) {
+          alert("Please enter a positive number");
+          return;
         }
 
-    </script>
-</body>
+        if (trials < 8) {
+          if (number == randNum) {
+            e.target.removeEventListener("click",func);
+            alert("you Win!!");
+            return;
+          }
+          if (number > randNum)
+            alert("too large - trial " + trials + "/8\nEnter number again:");
+          else if (number < randNum)
+            alert("too small - trial " + trials + "/8\nEnter number again:");
+          trials++;
+        } else {
+          e.target.removeEventListener("click",func);
+          alert("you loose");
+        }
+      };
 
-</html> 
+      alert("Enter a guess between 1 and 100:");
+      submit.addEventListener("click",func);
+    </script>
+  </body>
+</html>
